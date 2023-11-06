@@ -6,11 +6,15 @@ const Login = () => {
     const formOnChange = (e) => {
         e.preventDefault();
         // CALL REDUCER AND UPDATE STATE HERE
-    }
+    };
+
+    const formOnSubmit = async (e) => {
+        await e.preventDefault();
+    };
 
     return (
         <Box>
-            <form onChange={formOnChange}>
+            <form onSubmit={formOnSubmit} onChange={formOnChange}>
                 <input type="text"></input>
                 <input type="password"></input>
                 <Button type="submit"> Login </Button>
