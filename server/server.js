@@ -3,12 +3,11 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 
-const leaderboardRouter = require('./leaderboardRouter.js');
+const leaderboardRouter = require('./routers/leaderboardRouter.js');
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, '../build')));
-
+app.use('/', express.static(path.join(__dirname, '../build')));
 
 // Routers
 app.use('/db', leaderboardRouter);
@@ -23,7 +22,7 @@ app.use((err, req, res, next) => {
     const defaultErr = {
         log: 'Express default error handler',
         status: 500,
-        message: {error: `An error occurred: ${err}`};
+        message: {error: `An error occurred: ${err}`}
     };
     
     const errorObj = Object.assign({}, defaultErr, err);
