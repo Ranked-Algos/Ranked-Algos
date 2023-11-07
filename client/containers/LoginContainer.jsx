@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Chip, Grid, Button, Stack, Fab, Typography, CircularProgress, Tooltip, Paper } from '@mui/material';
-
+import { Outlet } from "react-router-dom";
 
 const Login = () => {
     const formOnChange = (e) => {
@@ -13,12 +13,14 @@ const Login = () => {
     };
 
     return (
-        <Box>
+        <Box id="login">
             <form onSubmit={formOnSubmit} onChange={formOnChange}>
                 <input type="text"></input>
                 <input type="password"></input>
                 <Button type="submit"> Login </Button>
             </form>
+
+        <Outlet/>
         </Box>
     )
 }
