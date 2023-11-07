@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Chip, Grid, Button, Stack, Fab, Typography, CircularProgress, Tooltip, Paper } from '@mui/material';
-import {useSelector, useDispatch} from "react-redux";
+import { Outlet } from "react-router-dom";import {useSelector, useDispatch} from "react-redux";
 import {updateUsername, updatePassword, givePermission, removePermission, setID, clearID} from '../redux/features/authData/authSlice.js'
 
 
