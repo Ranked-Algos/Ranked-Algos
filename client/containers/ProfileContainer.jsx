@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Chip, Grid, Button, Stack, Fab, Typography, CircularProgress, Tooltip, Paper } from '@mui/material';
+import {useSelector, useDispatch} from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+    const auth = useSelector((state) => state.auth)
+
+    const { usernameInput, passwordInput, isAuthenticated, user_id } = auth;
+
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate('/')
+        }
+    }, [isAuthenticated])
 
     return (
         <Box>
