@@ -1,26 +1,48 @@
 import React from "react";
 import { Box, Chip, Grid, Button, Stack, Fab, Typography, CircularProgress, Tooltip, Paper } from '@mui/material';
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";import {useSelector, useDispatch} from "react-redux";
+import {updateUsername, updatePassword, givePermission, removePermission, setID, clearID} from '../redux/features/authData/authSlice.js'
+
 
 const Login = () => {
-    const formOnChange = (e) => {
-        e.preventDefault();
-        // CALL REDUCER AND UPDATE STATE HERE
+    const auth = useSelector((state) => state.auth)
+    const dispatch = useDispatch()
+    
+    const handleUsernameChange = (e) => {
+       
+        dispatch(updateUsername(e.target.value))
     };
 
-    const formOnSubmit = async (e) => {
-        await e.preventDefault();
+    const handlePasswordChange = (e) => {
+        
+        dispatch(updatePassword(e.target.value))
     };
+
+    const handleLoginClick = () => {
+
+        // fake login process for testing
+        const fakeUsername = 'tarik'
+        const fakePassword = 'supreme'
+
+        if (auth.usernameInput === fakeUsername && auth.passwordInput === fakePassword) {
+            dispatch(givePermission())
+            dispatch(setID(14))
+        } else {
+            dispatch(removePermission())
+            dispatch(clearID())
+        }
+
+    }
+
+    
 
     return (
-        <Box id="login">
-            <form onSubmit={formOnSubmit} onChange={formOnChange}>
-                <input type="text"></input>
-                <input type="password"></input>
-                <Button type="submit"> Login </Button>
-            </form>
-
-        <Outlet/>
+        <Box>
+            Username: <input className = 'input' onChange = {handleUsernameChange} value = {auth.usernameInput}/>
+            Password: <input className = 'input' onChange = {handlePasswordChange} value = {auth.paswordInput}/>
+            <button type="button" onClick={handleLoginClick}>Login</button>
+            <p> {'TEST: auth boolean is ' + auth.isAuthenticated} </p>
+            <p> {'TEST: user_ID is ' + auth.user_id} </p>
         </Box>
     )
 }
