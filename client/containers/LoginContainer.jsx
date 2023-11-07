@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Chip, Grid, Button, Stack, Fab, Typography, CircularProgress, Tooltip, Paper } from '@mui/material';
-import { Outlet } from "react-router-dom";import {useSelector, useDispatch} from "react-redux";
-import {updateUsername, updatePassword, givePermission, removePermission, setID, clearID} from '../redux/features/authData/authSlice.js'
-
+import {useSelector, useDispatch} from "react-redux";
+import {updateUsername, updatePassword, givePermission, removePermission, setID, clearID} from '../redux/features/AuthData/AuthSlice'
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const auth = useSelector((state) => state.auth)
@@ -31,10 +31,7 @@ const Login = () => {
             dispatch(removePermission())
             dispatch(clearID())
         }
-
     }
-
-    
 
     return (
         <Box>

@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import {useSelector, useDispatch} from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Leaderboard = () => {
+    const auth = useSelector((state) => state.auth)
 
-    return (
-        <p> Leaderboard </p>
-    )
+    const { usernameInput, passwordInput, isAuthenticated, user_id } = auth;
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate('/')
+        }
+    }, [isAuthenticated])
+
+    return(
+        'hello'
+    ) 
 
 }
 
