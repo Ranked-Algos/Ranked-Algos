@@ -6,8 +6,8 @@ const initialState = {
     isAuthenticated: false
 }
 
-export const AuthSlice = createSlice({
-    name: 'Auth',
+export const authSlice = createSlice({
+    name: 'auth',
     initialState,
     reducers: {
         updateUsername: (state, action) => {
@@ -25,6 +25,6 @@ export const AuthSlice = createSlice({
     }
 })
 
-export const {updateUsername, updatePassword, givePermission, removePermission} = AuthSlice.actions
+export const {updateUsername, updatePassword, givePermission, removePermission} = authSlice.actions
 
-export default AuthSlice.reducer
+export default authSlice.reducer
