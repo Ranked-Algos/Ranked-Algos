@@ -55,14 +55,14 @@ module.exports = {
                 target: 'http://localhost:3000/',
                 secure: false,
               },
-            //   '/status/**': {
-            //     target: 'http://localhost:3000/',
-            //     secure: false,
-            //   },
-            //   '/google/**': {
-            //     target: 'http://localhost:3000/',
-            //     secure: false,
-            //   },
+              '/leaders/**': {
+                target: 'http://localhost:3000/',
+                secure: false,
+              },
+              '/code/**': {
+                target: 'http://localhost:3000/',
+                secure: false,
+              },
         },
         historyApiFallback: true,
     },
