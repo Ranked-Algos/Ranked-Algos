@@ -120,5 +120,26 @@ userController.verifyUser = async (req, res, next) => {
     }
 };
 
+userController.setCookie = (req, res, next) => {    
+
+    if (res.locals.verifiedUser.rows[0].user_id) {
+        // using a secret word for now
+        // res.cookie('ssid', `${res.locals.verifiedUser.rows[0].user_id}`, {httpOnly : true})
+        res.cookie('ssid', `secret`, {httpOnly : true})
+    }
+  
+    return next()
+};
+
+userController.checkCookie = (req, res, next) => {
+    console.log('inside check cookie. cookie is', req.cookies)
+    if (req.cookies.ssid === 'secret'){
+        res.locals.cookieBool = true
+    } else {
+        res.locals.cookieBool = false
+    }
+    next()
+}
+
 
 module.exports = userController;

@@ -8,9 +8,13 @@ authRouter.post('/signup', userController.createUser, userController.verifyUser,
 
 });
 
-authRouter.post('/login', userController.verifyUser, (req, res) => {
+authRouter.post('/login', userController.verifyUser, userController.setCookie, (req, res) => {
 
     res.send(res.locals.verifiedUser.rows[0]).status(200);
+})
+
+authRouter.get('/cookie', userController.checkCookie, (req, res) => {
+    res.send(res.locals.cookieBool)
 })
 
 module.exports = authRouter
