@@ -1,10 +1,10 @@
 const express = require('express');
 const authRouter = express.Router()
-const userController = require('../controllers/userController.js');
+const userController = require('../controllers/userController');
 
-authRouter.post('/signup', userController.createUser, (req, res) => {
+authRouter.post('/signup', userController.createUser, userController.verifyUser, (req, res) => {
     // what should happen here on successful sign up?
-    res.send(res.locals.newUser).status(200);
+    res.send(res.locals.verifiedUser.rows[0]).status(200);
 
 });
 
