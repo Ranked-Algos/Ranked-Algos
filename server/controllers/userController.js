@@ -40,7 +40,7 @@ userController.createUser = async (req, res, next) => {
 
                 if (err) {
                     console.log(err);
-                    return next('Database error at bcrypt hash');
+                    return next('Username already exists');
                 }
 
                 else {
@@ -97,13 +97,17 @@ userController.verifyUser = async (req, res, next) => {
             values: [username]
         };
         res.locals.verifiedUser = await pool.query(query);
-        if (!res.locals.verifiedUser) {
-            console.log('User not found in database!');
+        console.log(res.locals.verifiedUser);
+        if (res.locals.verifiedUser.rows.length === 0) {
+            return next('User not found in database!');
         }
 
         const passwordMatch = await bcrypt.compare(password, res.locals.verifiedUser.rows[0].password)
         if (passwordMatch) {
             return next()
+        }
+        else {
+            return next('valid user but incorrect password provided!');
         }
     } catch (err) {
 
