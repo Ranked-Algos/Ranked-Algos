@@ -11,6 +11,7 @@ const Algo = () => {
     let auth = useSelector((state) => state.auth)
     const { usernameInput, passwordInput, isAuthenticated, user_id } = auth;
     const { codeText, time, running } = useSelector((state) => state.code)
+    const navigate = useNavigate()
     
     const fetchRequest = async (endpoint, method, card) => {
         // If no "method" is passed, it uses this default header

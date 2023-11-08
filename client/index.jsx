@@ -12,11 +12,17 @@ import Profile from "./containers/ProfileContainer.jsx";
 import Leaderboard from "./containers/LeaderboardContainer.jsx";
 import Algo from "./containers/AlgoPerformer.jsx";
 import AlgoList from "./containers/AlgoListContainer.jsx";
+import Signup from "./containers/SignupContainer";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Login/>,
+        errorElement: <RouterErrorPage/>,
+    },
+    {
+        path: '/signup',
+        element: <Signup/>,
         errorElement: <RouterErrorPage/>,
     },
     {
@@ -30,15 +36,15 @@ const router = createBrowserRouter([
         errorElement: <RouterErrorPage/>,
     },
     {
-        path: '/Algo',
+        path: '/algo',
         element: <Algo/>,
         errorElement: <RouterErrorPage/>,
     },
     {
-        path: '/AlgoList',
+        path: '/algolist',
         element:<AlgoList/>,
         errorElement: <RouterErrorPage/>,
-    },
+    }
 ])
 
 const root = createRoot(document.getElementById("root"));
