@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
     const auth = useSelector((state) => state.auth)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     
     const handleUsernameChange = (e) => {
        

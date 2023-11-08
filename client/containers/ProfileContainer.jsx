@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const auth = useSelector((state) => state.auth)
+    const navigate = useNavigate()
 
     const { usernameInput, passwordInput, isAuthenticated, user_id } = auth;
 
