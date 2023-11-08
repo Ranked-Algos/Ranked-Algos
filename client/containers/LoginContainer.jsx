@@ -40,9 +40,17 @@ const Login = () => {
             },
             body: JSON.stringify({username: auth.usernameInput, password: auth.passwordInput})
         })
-        .then((res) => res.json())
+        .then((res) => {
+            return res.json()
+        })
         .then((data) => {
-            console.log('the data is', data)})
+            if (data.user_id){
+                dispatch(givePermission())
+                dispatch(setID(data.user_id))
+                navigate('/algo')
+            }
+            
+        })
         .catch((error) => console.log('in catch block. the error is', error))
 
 
