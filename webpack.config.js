@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
     mode: 'development',
     entry: [
-        './client/index.js'
+        './client/index.jsx'
     ],
     output: {
         path: path.resolve(__dirname, 'build'),
@@ -47,7 +47,7 @@ module.exports = {
         port: process.env.FRONTEND_PORT || 8080,
         static: {
             directory: path.join(__dirname, '/build'),
-            publicPath: '/build/bundle.js'
+            publicPath: '/'
         },
         hot: true,
         proxy: {
@@ -55,14 +55,14 @@ module.exports = {
                 target: 'http://localhost:3000/',
                 secure: false,
               },
-              '/status/**': {
-                target: 'http://localhost:3000/',
-                secure: false,
-              },
-              '/google/**': {
-                target: 'http://localhost:3000/',
-                secure: false,
-              },
+            //   '/status/**': {
+            //     target: 'http://localhost:3000/',
+            //     secure: false,
+            //   },
+            //   '/google/**': {
+            //     target: 'http://localhost:3000/',
+            //     secure: false,
+            //   },
         },
         historyApiFallback: true,
     },
