@@ -13,11 +13,12 @@ import Leaderboard from "./containers/LeaderboardContainer.jsx";
 import Algo from "./containers/AlgoPerformer.jsx";
 import AlgoList from "./containers/AlgoListContainer.jsx";
 import Signup from "./containers/SignupContainer";
+import HomePage from "./components/HomePage";
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Login/>,
+        element: <HomePage/>,
         errorElement: <RouterErrorPage/>,
     },
     {
@@ -54,3 +55,9 @@ root.render(
         <RouterProvider router={router} />
     </Provider>
  )
+
+// root.render(
+//     <Provider store={Store}>
+//         <HomePage/>
+//     </Provider>
+// )
