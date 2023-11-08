@@ -27,6 +27,7 @@ userController.createUser = async (req, res, next) => {
 
     try {
         const { username, password } = req.body;
+        console.log('USER', username, 'PASS', password)
 
         bcrypt.hash(password, saltRounds).then(hash => {
             console.log('Hash ', hash);

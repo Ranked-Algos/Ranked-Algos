@@ -51,26 +51,26 @@ module.exports = {
         },
         hot: true,
         proxy: {
+            // '/signup/**': {
+            //     target: 'http://localhost:3000/',
+            //     secure: false,
+            //     },
             '/db/**': {
                 target: 'http://localhost:3000/',
                 secure: false,
-              },
-              '/leaders/**': {
-                target: 'http://localhost:3000/',
-                secure: false,
-              },
-              '/code/**': {
-                target: 'http://localhost:3000/',
-                secure: false,
-              },
-              '/signup/**': {
-                target: 'http://localhost:3000/',
-                secure: false,
-              },
-              '/login/**': {
-                target: 'http://localhost:3000/',
-                secure: false,
-              },
+            },
+            '/leaders/**': {
+            target: 'http://localhost:3000/',
+            secure: false,
+            },
+            '/code/**': {
+            target: 'http://localhost:3000/',
+            secure: false,
+            },
+            '/login/**': {
+            target: 'http://localhost:3000/',
+            secure: false,
+            },
         },
         historyApiFallback: true,
     },

@@ -7,7 +7,7 @@ const cors = require('cors');
 const leaderboardRouter = require('./routers/leaderboardRouter.js');
 const codeRouter = require('./routers/codeRouter.js');
 const databaseRouter = require('./routers/databaseRouter.js');
-const userController = require('./controllers/userController.js');
+const authRouter = require('./routers/authRouter.js')
 
 app.use(express.json());
 app.use(cors());
@@ -29,18 +29,7 @@ app.use('/', express.static(path.join(__dirname, '../build')));
 app.use('/db', databaseRouter);
 app.use('/leaders', leaderboardRouter);
 app.use('/code', codeRouter);
-
-app.post('/signup', userController.createUser, (req, res) => {
-    // what should happen here on successful sign up?
-    res.send(res.locals.newUser).status(200);
-
-});
-
-app.post('/login', userController.verifyUser, (req, res) => {
-
-
-    res.send(res.locals.verifiedUser.rows[0]).status(200);
-})
+app.use('/auth', authRouter);
 
 // 404 Error Handler
 app.use('*', (req, res) => {
