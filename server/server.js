@@ -25,7 +25,6 @@ app.use('/', express.static(path.join(__dirname, '../build')));
 //       }
 //   });
 
-
 // Routers
 app.use('/db', databaseRouter);
 app.use('/leaders', leaderboardRouter);
@@ -40,9 +39,7 @@ app.post('/signup', userController.createUser, (req, res) => {
 app.post('/login', userController.verifyUser, (req, res) => {
 
     res.send(res.locals.verifiedUser.rows[0]).status(200);
-
 })
-
 
 // 404 Error Handler
 app.use('*', (req, res) => {
