@@ -33,7 +33,7 @@ const Login = () => {
         //     dispatch(clearID())
         // }
 
-        fetch('/login', {
+        fetch('/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,7 +41,8 @@ const Login = () => {
             body: JSON.stringify({username: auth.usernameInput, password: auth.passwordInput})
         })
         .then((res) => res.json())
-        .then((data) => console.log('the data is', data))
+        .then((data) => {
+            console.log('the data is', data)})
         .catch((error) => console.log('in catch block. the error is', error))
 
 
