@@ -51,10 +51,10 @@ module.exports = {
         },
         hot: true,
         proxy: {
-            // '/signup/**': {
-            //     target: 'http://localhost:3000/',
-            //     secure: false,
-            //     },
+            '/auth/**': {
+                target: 'http://localhost:3000/',
+                secure: false,
+                },
             '/db/**': {
                 target: 'http://localhost:3000/',
                 secure: false,
@@ -64,10 +64,6 @@ module.exports = {
             secure: false,
             },
             '/code/**': {
-            target: 'http://localhost:3000/',
-            secure: false,
-            },
-            '/login/**': {
             target: 'http://localhost:3000/',
             secure: false,
             },
