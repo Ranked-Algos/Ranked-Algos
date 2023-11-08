@@ -61,7 +61,7 @@ const Algo = () => {
             <Button onClick={() => dispatch(start())}> Start</Button>
             <Button onClick={() => dispatch(stop())}> Stop</Button>
             <Button onClick={() => dispatch(resetTime())}> Reset</Button>
-            {running ? <CodeMirror extensions={[javascript({ jsx: true })]} onChange={(e) => dispatch(updateCode(e))} />
+            {running ? <CodeMirror extensions={[javascript({ jsx: true })]} onChange={(e) => dispatch(updateCodeText(e))} />
             : <p>Press Start to Begin</p>}
             <Button onClick={onSubmitHandleClick}> Submit </Button>
         </Box>
