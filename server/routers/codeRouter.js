@@ -6,7 +6,7 @@ const codeRouter = express.Router();
 
 
 codeRouter.post('/', codeController.runCode, (req, res, next) => {
-    //fs.writeFileSync("test.js", req.body.code);
+
     res.json({ message: res.locals.codeResults });
 
 

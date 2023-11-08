@@ -4,7 +4,7 @@ const initialState = {
     usernameInput: '',
     passwordInput: '',
     isAuthenticated: false,
-    user_id: null
+    user_id: 10
 }
 
 export const authSlice = createSlice({
@@ -32,6 +32,6 @@ export const authSlice = createSlice({
     }
 })
 
-export const {updateUsername, updatePassword, givePermission, removePermission, setID, clearID} = authSlice.actions
+export const { updateUsername, updatePassword, givePermission, removePermission, setID, clearID } = authSlice.actions
 
 export default authSlice.reducer
