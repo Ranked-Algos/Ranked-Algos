@@ -1,9 +1,10 @@
 const express = require('express');
 const leaderboardRouter = express.Router();
+const leaderboardController = require('../controllers/leaderboardController');
 
-leaderboardRouter.use('/', (req, res, next) => {
+leaderboardRouter.get('/', leaderboardController.getTasks, (req, res, next) => {
 
-    return res.status(200);
+    res.json({ message: 'Success with leaderboardRouter!' });
 });
 
 module.exports = leaderboardRouter;
