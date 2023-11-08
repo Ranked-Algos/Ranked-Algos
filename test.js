@@ -1,26 +1,21 @@
-const twoSum = (arr, target) => {
-
-  if (arr.length === 0) return false
-
-  let leftPointer = 0;
-  let rightPointer = arr.length - 1;
-
-  const sortedArray = arr.sort((a, b) => a - b);
-  while (leftPointer < rightPointer) {
-    const sum = sortedArray[leftPointer] + sortedArray[rightPointer];
-    if (sum === target) {//
-      return true;
-    }
-    else if (sum < target) {
-      leftPointer++;
-    }
-    else if (sum > target) {
-      rightPointer--;
+const twoSum = (arr, target) => { 
+  const cache = {}
+  // Count how many times each number appears and store it in cache.
+  for(let num of arr){
+    if(!cache[num]) cache[num] = 1;
+    else cache[num]++;
+  }
+  for(let num of arr){
+    if(cache[target-num]){
+      if(target-num === num){
+        // Check if there is more than one element with value num.
+        if(cache[target-num] > 1) return true
+        else continue;
+      }
+      else return true;
     }
   }
-
   return false;
-
 }
 let result = "";
 const arr1 = [1, 4, 6, 12, 9];
