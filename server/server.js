@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const leaderboardRouter = require('./routers/leaderboardRouter.js');
 const codeRouter = require('./routers/codeRouter.js');
@@ -13,6 +14,8 @@ const authRouter = require('./routers/authRouter.js');
 app.use(express.json());
 app.use(cors());
 app.use('/', express.static(path.join(__dirname, '../build')));
+app.use(cookieParser())
+
 
 
 

@@ -10,7 +10,13 @@ const Leaderboard = () => {
 
     useEffect(() => {
         if (!isAuthenticated) {
-            navigate('/')
+            fetch('http://localhost:3000/auth/cookie')
+            .then ((res) => res.json())
+            .then((data) => {
+                if (!data) {
+                    navigate('/')
+                }
+            })
         }
     }, [isAuthenticated])
 

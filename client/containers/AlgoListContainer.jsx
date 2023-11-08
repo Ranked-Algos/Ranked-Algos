@@ -8,15 +8,14 @@ const AlgoList = () => {
     const { usernameInput, passwordInput, isAuthenticated, user_id } = auth;
 
     useEffect(() => {
-        
-        // then
-        if (isAuthenticated) {
-            // let them in
-        } else {
-            // check cookie against db
-
-            navigate('/')
-
+        if (!isAuthenticated) {
+            fetch('http://localhost:3000/auth/cookie')
+            .then ((res) => res.json())
+            .then((data) => {
+                if (!data) {
+                    navigate('/')
+                }
+            })
         }
     }, [isAuthenticated])
 

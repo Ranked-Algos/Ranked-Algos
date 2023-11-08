@@ -35,11 +35,17 @@ const Algo = () => {
         fetchRequest('/code', {method: "POST"}, {codeText: codeText, time: time})
     }
     
-    // useEffect(() => {
-    //     if (!isAuthenticated) {
-    //         navigate('/')
-    //     }
-    // }, [isAuthenticated])
+    useEffect(() => {
+        if (!isAuthenticated) {
+            fetch('http://localhost:3000/auth/cookie')
+            .then ((res) => res.json())
+            .then((data) => {
+                if (!data) {
+                    navigate('/')
+                }
+            })
+        }
+    }, [isAuthenticated])
     
     useEffect(() => {
         let timer;
