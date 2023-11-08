@@ -36,10 +36,14 @@ const Signup = () => {
         dispatch(updatePassword(e.target.value))
     }
 
-    const handleLoginSubmit = (e) => {
-        e.preventDefault()
+    const handleLoginSubmit = async (e) => {
+        await e.preventDefault()
 
-        fetchRequest('/signup', {method: "POST"}, {username: usernameInput, password: passwordInput})        
+        const returnedData = await fetchRequest('http://localhost:3000/auth/signup', {method: "POST"}, {username: usernameInput, password: passwordInput})
+        await console.log('returnedData', returnedData)
+        if (returnedData) {
+            const {} = returnedData
+        }
     }
 
     return (

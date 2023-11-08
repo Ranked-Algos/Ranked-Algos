@@ -27,7 +27,6 @@ userController.createUser = async (req, res, next) => {
 
     try {
         const { username, password } = req.body;
-        console.log('USER', username, 'PASS', password)
 
         bcrypt.hash(password, saltRounds).then(hash => {
             console.log('Hash ', hash);
@@ -48,7 +47,6 @@ userController.createUser = async (req, res, next) => {
                     const newUser = { username: username, password: password }
                     res.locals.newUser = newUser
                     return next();
-
                 }
 
             })
@@ -93,6 +91,7 @@ userController.verifyUser = async (req, res, next) => {
 
     try {
         const { username, password } = req.body;
+
         const query = {
             text: 'SELECT * FROM users WHERE username = $1',
             values: [username]
