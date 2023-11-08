@@ -41,8 +41,13 @@ const Signup = () => {
 
         const returnedData = await fetchRequest('http://localhost:3000/auth/signup', {method: "POST"}, {username: usernameInput, password: passwordInput})
         await console.log('returnedData', returnedData)
-        if (returnedData) {
-            const {} = returnedData
+        if (!returnedData.error) {
+            const { user_id, username } = returnedData
+            console.log(user_id, username)
+        } else {
+            return (
+                console.log(returnedData.error)
+            )
         }
     }
 
