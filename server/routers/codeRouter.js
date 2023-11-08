@@ -4,11 +4,10 @@ const fs = require('fs');
 const codeController = require('../controllers/codeController');
 const codeRouter = express.Router();
 
-codeRouter.post('/', codeController.getTasks, (req, res, next) => {
 
-    console.log('REQ BODY', req.body)
+codeRouter.post('/', codeController.getTasks, (req, res, next) => {
     //fs.writeFileSync("test.js", req.body.code);
-    res.json({ message: 'Success with codeRouter!' });
+    res.json({ message: res.locals.codeResults });
 
 
 
