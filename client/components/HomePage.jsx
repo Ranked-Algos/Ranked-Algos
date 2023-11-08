@@ -24,11 +24,11 @@ const HomePage = () => {
         <Box id="home-page">
             <Paper justifyContent={'center'}>
                 <Tabs>
-                    <Tab onClick={loginDispatch} label="Login">  </Tab>
                     <Tab onClick={signupDispatch} label="Signup" >  </Tab>
+                    <Tab onClick={loginDispatch} label="Login">  </Tab>
                 </Tabs>
 
-                {(signup === 1) ? 
+                {(signup === 0) ? 
                     <Stack>
                         <Typography> Signup </Typography>
                         <Signup/>
