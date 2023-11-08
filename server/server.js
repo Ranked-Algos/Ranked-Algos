@@ -8,7 +8,6 @@ const cookieParser = require('cookie-parser');
 const leaderboardRouter = require('./routers/leaderboardRouter.js');
 const codeRouter = require('./routers/codeRouter.js');
 const databaseRouter = require('./routers/databaseRouter.js');
-const userController = require('./controllers/userController.js');
 const authRouter = require('./routers/authRouter.js');
 
 app.use(express.json());
@@ -16,33 +15,15 @@ app.use(cors());
 app.use('/', express.static(path.join(__dirname, '../build')));
 app.use(cookieParser())
 
-
-
-
 // Routers
 app.use('/db', databaseRouter);
 app.use('/leaders', leaderboardRouter);
 app.use('/code', codeRouter);
 app.use('/auth', authRouter);
 
-// app.post('/signup', userController.createUser, (req, res) => {
-//     // on successful signup, sends new user to front-end
-//     res.send('hi').status(200);
-//     //res.send(res.locals.verifiedUser.rows[0]).status(200);
-
-// });
-
-// app.post('/login', userController.verifyUser, (req, res) => {
-
-//     // on successful login, sends authenticated user info (id, username, pwd) to front-end
-//     res.send(res.locals.verifiedUser.rows[0]).status(200);
-
-// })
-
-
 // 404 Error Handler
 app.use('*', (req, res) => {
-    res.status(404).send('Page not found.');
+    res.sendFile(path.join(__dirname, '../build', 'index.html'))
 });
 
 // Global Error Handler
