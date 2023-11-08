@@ -97,7 +97,7 @@ userController.verifyUser = async (req, res, next) => {
             values: [username]
         };
         res.locals.verifiedUser = await pool.query(query);
-        console.log(res.locals.verifiedUser);
+        res.locals.verifiedUserID = res.locals.verifiedUser.rows[0].user_id;
         if (res.locals.verifiedUser.rows.length === 0) {
             return next('User not found in database!');
         }
