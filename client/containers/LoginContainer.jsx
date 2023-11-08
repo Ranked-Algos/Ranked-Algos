@@ -21,16 +21,29 @@ const Login = () => {
     const handleLoginClick = () => {
 
         // fake login process for testing
-        const fakeUsername = 'tarik'
-        const fakePassword = 'supreme'
+        // const fakeUsername = 'tarik'
+        // const fakePassword = 'supreme'
 
-        if (auth.usernameInput === fakeUsername && auth.passwordInput === fakePassword) {
-            dispatch(givePermission())
-            dispatch(setID(14))
-        } else {
-            dispatch(removePermission())
-            dispatch(clearID())
-        }
+        // if (auth.usernameInput === fakeUsername && auth.passwordInput === fakePassword) {
+        //     dispatch(givePermission())
+        //     dispatch(setID(14))
+        // } else {
+        //     dispatch(removePermission())
+        //     dispatch(clearID())
+        // }
+
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username: auth.usernameInput, password: auth.passwordInput})
+        })
+        .then((res) => res.json())
+        .then((data) => console.log('the data is', data))
+        .catch((error) => console.log('in catch block. the error is', error))
+
+
     }
 
     return (

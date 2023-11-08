@@ -38,6 +38,7 @@ app.post('/signup', userController.createUser, (req, res) => {
 
 app.post('/login', userController.verifyUser, (req, res) => {
 
+
     res.send(res.locals.verifiedUser.rows[0]).status(200);
 })
 

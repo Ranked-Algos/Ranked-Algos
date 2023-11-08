@@ -72,6 +72,7 @@ userController.createUser = async (req, res, next) => {
 
 userController.verifyUser = async (req, res, next) => {
 
+
     const myURI = process.env.AWS_PASSWORD;
 
     // AWS connection
@@ -106,6 +107,8 @@ userController.verifyUser = async (req, res, next) => {
             return next()
         }
     } catch (err) {
+
+        console.log('inside error block')
 
         await client.query('ROLLBACK');
         next(err);
