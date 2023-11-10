@@ -31,8 +31,9 @@ const Algo = () => {
             .catch((err) => console.error(err))
         return result;
     }
-    const onSubmitHandleClick = (e) => {
-        fetchRequest('/code', { method: "POST" }, { codeText: codeText, time: time, user_id: user_id })
+    const onSubmitHandleClick = async (e) => {
+        const returnedData = await fetchRequest('http://localhost:3000/code', { method: "POST" }, { codeText: codeText, time: time, user_id: user_id })
+        await console.log('returnedData', returnedData)
     }
     
     useEffect(() => {
@@ -68,7 +69,13 @@ const Algo = () => {
             <Button onClick={() => dispatch(start())}> Start</Button>
             <Button onClick={() => dispatch(stop())}> Stop</Button>
             <Button onClick={() => dispatch(resetTime())}> Reset</Button>
-            {running ? <CodeMirror extensions={[javascript({ jsx: true })]} onChange={(e) => dispatch(updateCodeText(e))} />
+            {running ? 
+            <Stack>
+                <Typography>
+                    
+                </Typography>
+                <CodeMirror extensions={[javascript({ jsx: true })]} onChange={(e) => dispatch(updateCodeText(e))} />
+            </Stack>
                 : <p>Press Start to Begin</p>}
             <Button onClick={onSubmitHandleClick}> Submit </Button>
         </Box>
